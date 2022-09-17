@@ -105,3 +105,13 @@ anims/attack = SubResource( 2 )
 anims/dead = SubResource( 5 )
 anims/idle = SubResource( 3 )
 anims/run = SubResource( 4 )
+
+[node name="camera" type="Camera2D" parent="."]
+current = true
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+drag_margin_left = 0.4
+drag_margin_top = 0.4
+drag_margin_right = 0.4
+drag_margin_bottom = 0.4
+editor_draw_drag_margin = true
