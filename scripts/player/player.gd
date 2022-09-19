@@ -3,6 +3,7 @@ class_name Player
 
 
 var velocity: Vector2
+var RunParticles: PackedScene = preload('res://scenes/prefabs/run_particles.tscn')
 onready var texture: Sprite = $texture
 onready var animation: AnimationPlayer = $animation
 export(int) var speed
@@ -35,3 +36,11 @@ func animate() -> void:
     animation.play('run')
   else:
     animation.play('idle')
+
+
+func instance_particles() -> void:
+  var run_particles = RunParticles.instance()
+  get_tree().root.call_deferred('add_child', run_particles)
+  run_particles.global_position = global_position + Vector2(0, 17)
+  run_particles.play_particles()
+
