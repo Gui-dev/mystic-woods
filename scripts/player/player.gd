@@ -51,3 +51,8 @@ func instance_particles() -> void:
 
 func kill() -> void:
   can_die = true
+
+
+func _on_animation_finished(anim_name: String) -> void:
+  if anim_name == 'dead':
+    var _reload := get_tree().reload_current_scene()
