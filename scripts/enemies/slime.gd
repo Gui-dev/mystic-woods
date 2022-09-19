@@ -22,6 +22,7 @@ func move() -> void:
     var distance_length: float = distance.length()
     
     if distance_length <= 5:
+      player_ref.kill()
       velocity = Vector2.ZERO
     else:
       velocity = speed * direction
