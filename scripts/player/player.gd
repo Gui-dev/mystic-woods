@@ -3,6 +3,7 @@ class_name Player
 
 
 var velocity: Vector2
+var can_die: bool = false
 var RunParticles: PackedScene = preload('res://scenes/prefabs/run_particles.tscn')
 onready var texture: Sprite = $texture
 onready var animation: AnimationPlayer = $animation
@@ -32,7 +33,10 @@ func verify_direction() -> void:
   
 
 func animate() -> void:
-  if velocity != Vector2.ZERO:
+  if can_die:
+    animation.play('dead')
+    set_physics_process(false)
+  elif velocity != Vector2.ZERO:
     animation.play('run')
   else:
     animation.play('idle')
@@ -44,3 +48,6 @@ func instance_particles() -> void:
   run_particles.global_position = global_position + Vector2(0, 17)
   run_particles.play_particles()
 
+
+func kill() -> void:
+  can_die = true
