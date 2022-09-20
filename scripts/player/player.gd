@@ -3,15 +3,18 @@ class_name Player
 
 
 var velocity: Vector2
+var can_attack: bool = false
 var can_die: bool = false
 var RunParticles: PackedScene = preload('res://scenes/prefabs/run_particles.tscn')
 onready var texture: Sprite = $texture
 onready var animation: AnimationPlayer = $animation
+onready var attack_area_collision: CollisionShape2D = $attack_area/collision
 export(int) var speed
 
 
 func _physics_process(_delta: float) -> void:
   move()
+  attack()
   verify_direction()
   animate()
 
@@ -25,16 +28,26 @@ func move() -> void:
   velocity = move_and_slide(velocity)
 
 
+func attack() -> void:
+  if Input.is_action_just_pressed('ui_select') and not can_attack:
+    can_attack = true
+
+
 func verify_direction() -> void:
   if velocity.x > 0:
     texture.flip_h = false
+    attack_area_collision.position = Vector2(20, 9)
   elif velocity.x < 0:
     texture.flip_h = true
+    attack_area_collision.position = Vector2(-20, 9)
   
 
 func animate() -> void:
   if can_die:
     animation.play('dead')
+    set_physics_process(false)
+  elif can_attack:
+    animation.play('attack')
     set_physics_process(false)
   elif velocity != Vector2.ZERO:
     animation.play('run')
@@ -56,3 +69,6 @@ func kill() -> void:
 func _on_animation_finished(anim_name: String) -> void:
   if anim_name == 'dead':
     var _reload := get_tree().reload_current_scene()
+  elif anim_name == 'attack':
+    set_physics_process(true)
+    can_attack = false
