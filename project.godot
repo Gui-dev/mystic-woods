@@ -8,9 +8,32 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "KinematicBody2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://scripts/player/player.gd"
+}, {
+"base": "AnimatedSprite",
+"class": "RunParticles",
+"language": "GDScript",
+"path": "res://scripts/prefabs/run_particles.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Slime",
+"language": "GDScript",
+"path": "res://scripts/enemies/slime.gd"
+} ]
+_global_script_class_icons={
+"Player": "",
+"RunParticles": "",
+"Slime": ""
+}
+
 [application]
 
 config/name="mystic-woods"
+run/main_scene="res://scenes/levels/level.tscn"
 config/icon="res://icon.png"
 
 [display]
