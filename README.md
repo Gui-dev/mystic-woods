@@ -1,6 +1,6 @@
-<!--# Flappy Bird
+# Mystic Woods
 
-Flappy Bird Clone is a clone of the mobile game, created to learn game development.
+Mistic Woods is a classic RPG style platform game, created to learn game development.
 
 ## Tecnologias
 
@@ -10,22 +10,22 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 ## Screenshot
 
-![asd](./.screens/image_01.png) ![asd](./.screens/image_02.png)
+![asd](./.screens/game.png)
 
 ## Features
 
 - [x] Avoid obstacles (collision)
 - [x] Animation on walk/idle
-- [] Attack with animation
-- [] Player & monster stats
-- [] Monsters tries to reach the player
+- [x] Attack with animation
+- [x] Player & monster stats
+- [x] Monsters tries to reach the player
 - [] Monsters attacks
 - [x] Player dies
 - [] UI bars
-- [] Monsters wander around when player's near
+- [x] Monsters wander around when player's near
 - [ ] A-Star algorithm when monsters trying to reach the player
-- [] A cool map
-- [] Animation on attack
+- [x] A cool map
+- [x] Animation on attack
 - [] Stats bars on monsters
 - [] Ranged monsters and weapons
-- -->
+
